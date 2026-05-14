@@ -10,7 +10,7 @@ import io
 # ── Page config ──────────────────────────────────────────────────────────────
 st.set_page_config(page_title="Field Report", layout="centered")
 
-st.title("🔬 Field Discovery Reporter")
+st.title("Field Discovery Reporter")
 st.markdown("Document your scientific discovery in the field.")
 
 # ── 1. User Information ───────────────────────────────────────────────────────
@@ -21,7 +21,7 @@ notes = st.text_area("Description / Observations", placeholder="Describe what yo
 
 # ── 2. GPS Location ───────────────────────────────────────────────────────────
 st.header("2. GPS Location")
-location_data = gps_location_button(buttonText="📍 Get my location")
+location_data = gps_location_button(buttonText="Get my location")
 
 lat, lon = None, None
 if location_data is not None:
@@ -111,7 +111,7 @@ def generate_pdf(name, title, description, lat, lon, photo_bytes):
     return pdf.output()
 
 
-if st.button("📄 Generate PDF Report"):
+if st.button("Generate PDF Report"):
     errors = []
     if not researcher_name.strip():
         errors.append("• Researcher name is required.")
@@ -132,9 +132,9 @@ if st.button("📄 Generate PDF Report"):
             pdf_bytes = generate_pdf(
                 researcher_name, discovery_title, notes, lat, lon, photo_bytes
             )
-            st.success("✅ Report generated successfully!")
+            st.success("Report generated successfully!")
             st.download_button(
-                label="⬇️ Download PDF Report",
+                label="Download PDF Report",
                 data=bytes(pdf_bytes),
                 file_name=f"field_report_{date.today()}.pdf",
                 mime="application/pdf",
