@@ -1,0 +1,5 @@
+streamlit
+streamlit-gps-location
+fpdf2
+Pillow
+pandas
